@@ -23,8 +23,7 @@ namespace Game
         }
 
         protected override void Initialize()
-        {
-
+        {   
             base.Initialize();
         }
 
