@@ -17,6 +17,20 @@ namespace Game
         Player Localplayer;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        GameState CurrentGameState = GameState.MainMenu;
+
+        enum GameState
+        {
+            MainMenu,
+            Options,
+            Playing,
+            Pause,
+        }
+
+        //screen adjusts
+        int ScreenWidth = 800, screenHeight = 600;
+
+        Button ButtonPlay;
 
         public Game1()
         {
@@ -36,6 +50,10 @@ namespace Game
             Ressources.LoadContent(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             affiche = new Afficheur();
+
+            IsMouseVisible = true;
+            ButtonPlay = new Button(Content.Load<Texture2D>("Sprite/bouton_jouer2"), graphics.GraphicsDevice);
+            ButtonPlay.SetPosition(new Vector2(350, 300));   
         }
 
         protected override void UnloadContent()
@@ -45,9 +63,21 @@ namespace Game
 
         protected override void Update(GameTime gameTime)
         {
+            MouseState mouse = Mouse.GetState();
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
             affiche.Update(Mouse.GetState(), Keyboard.GetState());
+
+            switch (CurrentGameState)
+            {
+                case GameState.MainMenu:
+                    if (ButtonPlay.isClicked == true) CurrentGameState = GameState.Playing;
+                    break;
+
+                case GameState.Playing:
+
+                    break;
+            }
 
             base.Update(gameTime);
         }
@@ -57,8 +87,20 @@ namespace Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            affiche.Draw_affiche(spriteBatch);
-            spriteBatch.End();
+
+                switch (CurrentGameState)
+            {
+                case GameState.MainMenu:
+                    spriteBatch.Draw(Content.Load<Texture2D>("Sprite/fond"), new Rectangle(0, 0, ScreenWidth, screenHeight), Color.White);
+                    ButtonPlay.Draw(spriteBatch);
+                    break;
+
+                case GameState.Playing:
+                    affiche.Draw_affiche(spriteBatch);
+                    break;
+            }
+                spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }

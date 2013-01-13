@@ -37,6 +37,7 @@ namespace Game
             // update des autres classes
             localplayer.update(souris, clavier);
         }
+
         public void Draw_affiche(SpriteBatch spriteBatch)
         {
             localplayer.draw_player(spriteBatch);

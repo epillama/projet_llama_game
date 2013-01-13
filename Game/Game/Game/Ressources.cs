@@ -14,9 +14,14 @@ namespace Game
         public static Texture2D joueur;
         //texture du lama
 
+        public static Texture2D jouer;
+
         public static void LoadContent(ContentManager Content)
         {
             joueur = Content.Load<Texture2D>("Sprite/Lama2");
+
+            // menu
+            jouer = Content.Load<Texture2D>("Sprite/bouton_jouer2");
         }
     }
 }
