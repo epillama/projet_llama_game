@@ -34,7 +34,7 @@ namespace Game
 
         protected override void UnloadContent()
         {
-
+            //ca sert pas a grand chose!
         }
 
         protected override void Update(GameTime gameTime)
