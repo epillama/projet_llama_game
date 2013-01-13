@@ -11,12 +11,12 @@ namespace Game
     {
         //Cette classe va gerer tout les load de ressources (ca fait plus propre)
 
-        public Texture2D Player;
+        public static Texture2D joueur;
         //texture du lama
 
         public static void LoadContent(ContentManager Content)
         {
-
+            joueur = Content.Load<Texture2D>("Sprite/Lama2");
         }
     }
 }
