@@ -56,18 +56,44 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprite\Menu\Jouer.png">
-      <Name>Jouer</Name>
+    <Compile Include="Sprite\Menu\jouer1.png">
+      <Name>jouer1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprite\Menu\Options.png">
-      <Name>Options</Name>
+    <Compile Include="Sprite\Menu\jouer2.png">
+      <Name>jouer2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprite\Menu\Quit.png">
-      <Name>Quit</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprite\Menu\Quitter1.png">
+      <Name>Quitter1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprite\Menu\Quitter2.png">
+      <Name>Quitter2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprite\Menu\Options1.png">
+      <Name>Options1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprite\Menu\Options2.png">
+      <Name>Options2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprite\End.png">
+      <Name>End</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -101,16 +101,16 @@ namespace Game
             {
                 case GameState.MainMenu:
                     spriteBatch.Draw(Ressources.fondMenu, Vector2.Zero, Color.White);
-                    spriteBatch.Draw(Ressources.jouer, new Vector2(50, 400), Color.White);
-                    spriteBatch.Draw(Ressources.options, new Vector2(50, 450), Color.White);
-                    spriteBatch.Draw(Ressources.quit, new Vector2(50, 500), Color.White);
+                    spriteBatch.Draw(Ressources.jouer1, new Vector2(50, 400), Color.White);
+                    spriteBatch.Draw(Ressources.options1, new Vector2(50, 475), Color.White);
+                    spriteBatch.Draw(Ressources.quit1, new Vector2(50, 550), Color.White);
                     //Surbrillance
                     if (menuPosition == 0)
-                        spriteBatch.Draw(Ressources.jouer, new Vector2(50, 400), Color.Black);
+                        spriteBatch.Draw(Ressources.jouer2, new Vector2(50, 400), Color.White);
                     if (menuPosition == 1)
-                        spriteBatch.Draw(Ressources.options, new Vector2(50, 450), Color.Black);
+                        spriteBatch.Draw(Ressources.options2, new Vector2(50, 475), Color.White);
                     if (menuPosition == 2)
-                        spriteBatch.Draw(Ressources.quit, new Vector2(50, 500), Color.Black);
+                        spriteBatch.Draw(Ressources.quit2, new Vector2(50, 550), Color.White);
 
                     break;
 
@@ -127,7 +127,7 @@ namespace Game
                     break;
 
                 case GameState.Quit:
-
+                    spriteBatch.Draw(Ressources.imageQuit, Vector2.Zero, Color.White);
                     break;
             }
         }

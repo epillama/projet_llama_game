@@ -14,7 +14,6 @@ namespace Game
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         Afficheur affiche;
-        Player Localplayer;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -28,8 +27,8 @@ namespace Game
         protected override void Initialize()
         {
             base.Initialize();
-            this.graphics.PreferredBackBufferWidth = 800;
-            this.graphics.PreferredBackBufferHeight = 600;
+            this.graphics.PreferredBackBufferWidth = Ressources.fondMenu.Width;
+            this.graphics.PreferredBackBufferHeight = Ressources.fondMenu.Height;
             graphics.ApplyChanges();
 
         }
@@ -50,6 +49,8 @@ namespace Game
         protected override void Update(GameTime gameTime)
         {
             MouseState mouse = Mouse.GetState();
+            if (MainMenu.CurrentGameState == MainMenu.GameState.MainMenu)
+                this.IsMouseVisible = true;
             if (MainMenu.IsQuit)
                 this.Exit();
             affiche.Update();
