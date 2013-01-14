@@ -18,16 +18,19 @@ namespace Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            affiche = new Afficheur();
             Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
         {
             base.Initialize();
+            this.graphics.PreferredBackBufferWidth = 800;
+            this.graphics.PreferredBackBufferHeight = 600;
+            graphics.ApplyChanges();
 
         }
 
@@ -36,6 +39,7 @@ namespace Game
             Ressources.LoadContent(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             affiche = new Afficheur();
+
         }
 
         protected override void UnloadContent()
@@ -45,10 +49,10 @@ namespace Game
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            MouseState mouse = Mouse.GetState();
+            if (MainMenu.IsQuit)
                 this.Exit();
-            affiche.Update(Mouse.GetState(), Keyboard.GetState());
-
+            affiche.Update();
             base.Update(gameTime);
         }
 
@@ -59,6 +63,7 @@ namespace Game
             spriteBatch.Begin();
             affiche.Draw_affiche(spriteBatch);
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }
