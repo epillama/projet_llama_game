@@ -28,34 +28,37 @@ namespace Game
 
         // update & draw
 
-        public void update(MouseState mouse, KeyboardState clavier)
+        public void update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Right) && immobile)
+            if (MainMenu.CurrentGameState == MainMenu.GameState.Playing)
             {
-                player_hitbox.X = player_hitbox.X + 8;
-                immobile = false;
+                if (Keyboard.GetState().IsKeyDown(Keys.Right) && immobile)
+                {
+                    player_hitbox.X = player_hitbox.X + 8;
+                    immobile = false;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Left) && immobile)
+                {
+                    player_hitbox.X = player_hitbox.X - 8;
+                    immobile = false;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Up) && immobile)
+                {
+                    player_hitbox.Y = player_hitbox.Y - 8;
+                    immobile = false;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Down) && immobile)
+                {
+                    player_hitbox.Y = player_hitbox.Y + 8;
+                    immobile = false;
+                }
+                immobile = true;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && immobile)
-            {
-                player_hitbox.X = player_hitbox.X - 8;
-                immobile = false;
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && immobile)
-            {
-                player_hitbox.Y = player_hitbox.Y - 8;
-                immobile = false;
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down) && immobile)
-            {
-                player_hitbox.Y = player_hitbox.Y + 8;
-                immobile = false;
-            }
-            immobile = true;
         }
 
         public void draw_player(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Ressources.joueur, player_hitbox, new Rectangle(0, 0, 78, 58), Color.White); 
+            spriteBatch.Draw(Ressources.joueur, player_hitbox, new Rectangle(0, 0, 78, 58), Color.White);
         }
     }
 }

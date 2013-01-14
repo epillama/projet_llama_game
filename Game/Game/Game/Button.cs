@@ -13,6 +13,8 @@ namespace Game
         Texture2D Texture;
         Vector2 Position;
         Rectangle Rectangle;
+        bool down;
+        public bool isClicked;
 
         Color colour = new Color(255, 255, 255, 255);
 
@@ -26,8 +28,7 @@ namespace Game
 
         }
 
-        bool down;
-        public bool isClicked;
+
         public void Update(MouseState mouse)
         {
             Rectangle = new Rectangle((int)Position.X, (int)Position.Y, (int)size.X, (int)size.Y);
@@ -38,7 +39,7 @@ namespace Game
             {
                 if (colour.A == 255)
                     down = false;
-                if (colour.A == 0) 
+                if (colour.A == 0)
                     down = true;
                 if (down)
                     colour.A += 3;

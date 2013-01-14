@@ -17,31 +17,20 @@ namespace Game
         Player Localplayer;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GameState CurrentGameState = GameState.MainMenu;
 
-        enum GameState
-        {
-            MainMenu,
-            Options,
-            Playing,
-            Pause,
-        }
-
-        //screen adjusts
-        int ScreenWidth = 800, screenHeight = 600;
-
-        Button ButtonPlay;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            affiche = new Afficheur();
             Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
         {
             base.Initialize();
+            this.graphics.PreferredBackBufferWidth = 800;
+            this.graphics.PreferredBackBufferHeight = 600;
+            graphics.ApplyChanges();
 
         }
 
@@ -51,9 +40,6 @@ namespace Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             affiche = new Afficheur();
 
-            IsMouseVisible = true;
-            ButtonPlay = new Button(Content.Load<Texture2D>("Sprite/bouton_jouer2"), graphics.GraphicsDevice);
-            ButtonPlay.SetPosition(new Vector2(350, 300));   
         }
 
         protected override void UnloadContent()
@@ -64,21 +50,9 @@ namespace Game
         protected override void Update(GameTime gameTime)
         {
             MouseState mouse = Mouse.GetState();
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (MainMenu.IsQuit)
                 this.Exit();
-            affiche.Update(Mouse.GetState(), Keyboard.GetState());
-
-            switch (CurrentGameState)
-            {
-                case GameState.MainMenu:
-                    if (ButtonPlay.isClicked == true) CurrentGameState = GameState.Playing;
-                    break;
-
-                case GameState.Playing:
-
-                    break;
-            }
-
+            affiche.Update();
             base.Update(gameTime);
         }
 
@@ -87,19 +61,8 @@ namespace Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-
-                switch (CurrentGameState)
-            {
-                case GameState.MainMenu:
-                    spriteBatch.Draw(Content.Load<Texture2D>("Sprite/fond"), new Rectangle(0, 0, ScreenWidth, screenHeight), Color.White);
-                    ButtonPlay.Draw(spriteBatch);
-                    break;
-
-                case GameState.Playing:
-                    affiche.Draw_affiche(spriteBatch);
-                    break;
-            }
-                spriteBatch.End();
+            affiche.Draw_affiche(spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

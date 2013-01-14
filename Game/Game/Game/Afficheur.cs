@@ -17,30 +17,34 @@ namespace Game
         // champs
 
         Player localplayer;
- 
+        MainMenu affichemenu;
+
 
         // constructeur
 
         public Afficheur()
         {
-           localplayer = new Player();
+            localplayer = new Player();
+            affichemenu = new MainMenu();
         }
 
         // methode
 
-      
+
         // update & draw
 
 
-        public void Update(MouseState souris, KeyboardState clavier)
+        public void Update()
         {
             // update des autres classes
-            localplayer.update(souris, clavier);
+            localplayer.update();
+            affichemenu.Update();
         }
 
         public void Draw_affiche(SpriteBatch spriteBatch)
         {
             localplayer.draw_player(spriteBatch);
+            affichemenu.Draw_Menu(spriteBatch);
         }
 
 

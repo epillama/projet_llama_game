@@ -49,15 +49,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprite\bouton_jouer2.png">
-      <Name>bouton_jouer2</Name>
+    <Compile Include="Sprite\Menu.png">
+      <Name>fond</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprite\fond blanc copier.jpg">
-      <Name>fond</Name>
+    <Compile Include="Sprite\Menu\Jouer.png">
+      <Name>Jouer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprite\Menu\Options.png">
+      <Name>Options</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprite\Menu\Quit.png">
+      <Name>Quit</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
