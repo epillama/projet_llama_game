@@ -24,9 +24,6 @@ namespace Game
         }
 
         static public GameState CurrentGameState = GameState.MainMenu;
-        Button ButtonPlay;
-        Button ButtonOptions;
-        Button ButtonQuit;
         int menuPosition = 0;
         static public bool IsQuit = false;
         bool changeselection = false;
@@ -65,12 +62,21 @@ namespace Game
                     if (menuPosition == 3)
                         menuPosition = 0;
                     //selection
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space) && menuPosition == 0)
-                        CurrentGameState = GameState.Playing;
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space) && menuPosition == 1)
-                        CurrentGameState = GameState.Options;
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space) && menuPosition == 2)
-                        CurrentGameState = GameState.Quit;
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                    {
+                        switch (menuPosition)
+                        {
+                            case 0:
+                                CurrentGameState = GameState.Playing;
+                                break;
+                            case 1:
+                                CurrentGameState = GameState.Options;
+                                break;
+                            case 2:
+                                CurrentGameState = GameState.Quit;
+                                break;
+                        }
+                    }
                     break;
 
                 case GameState.Playing:
@@ -115,7 +121,7 @@ namespace Game
                     break;
 
                 case GameState.Playing:
-
+                    spriteBatch.Draw(Ressources.grass, Player.Map, Color.White);
                     break;
 
                 case GameState.Pause:
@@ -123,11 +129,14 @@ namespace Game
                     break;
 
                 case GameState.Options:
-
+                    spriteBatch.Draw(Ressources.fondOptions, Vector2.Zero, Color.White);
+                    spriteBatch.Draw(Ressources.marchearret, new Rectangle(571, 352, 200, 76), new Rectangle(0, 0, 200, 76), Color.White);// premier rectangle : emplacement pour le fullscreen deuxieme : Marche
+                    spriteBatch.Draw(Ressources.marchearret, new Rectangle(569, 468, 200, 76), new Rectangle(0, 76, 200, 75), Color.White);// premier rectangle : emplacement pour le Volume deuxieme : arret
                     break;
 
                 case GameState.Quit:
                     spriteBatch.Draw(Ressources.imageQuit, Vector2.Zero, Color.White);
+                    
                     break;
             }
         }

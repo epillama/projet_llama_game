@@ -37,14 +37,16 @@ namespace Game
         public void Update()
         {
             // update des autres classes
-            localplayer.update();
+            
             affichemenu.Update();
+            localplayer.update();
         }
 
         public void Draw_affiche(SpriteBatch spriteBatch)
         {
-            localplayer.draw_player(spriteBatch);
+            
             affichemenu.Draw_Menu(spriteBatch);
+            localplayer.draw_player(spriteBatch);
         }
 
 
