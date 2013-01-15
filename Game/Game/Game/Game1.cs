@@ -54,7 +54,7 @@ namespace Game
                 this.IsMouseVisible = true;
             if (MainMenu.IsQuit)
             {
-                System.Threading.Thread.Sleep(3000);
+                System.Threading.Thread.Sleep(000);
                 this.Exit();
             }
             if (MainMenu.CurrentGameState == MainMenu.GameState.Playing)

@@ -35,7 +35,7 @@ namespace Game
         public static void LoadContent(ContentManager Content)
         {
             //personnage
-            joueur = Content.Load<Texture2D>("Sprite/Llama/Lama2");
+            joueur = Content.Load<Texture2D>("Sprite/Llama/Llamawalk");
             // menu
             jouer1 = Content.Load<Texture2D>("Sprite/Menu/jouer1");
             jouer2 = Content.Load<Texture2D>("Sprite/Menu/jouer2");
