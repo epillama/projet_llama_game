@@ -46,20 +46,25 @@ namespace Game
                 }
                 if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft) || Keyboard.GetState().IsKeyDown(Keys.Left)) && immobile && player_hitbox.X > 0)
                 {
-
+                    if (player_hitbox.X < Ressources.fondMenu.Width / 2 - player_hitbox.Width / 2 - player_hitbox.Width /4 )
                     player_hitbox.X = player_hitbox.X - 8;
+                    Map.X += 8;
 
                     immobile = false;
                 }
                 if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp) || Keyboard.GetState().IsKeyDown(Keys.Up)) && immobile && player_hitbox.Y > 0)
                 {
+                    if (player_hitbox.Y < Ressources.fondMenu.Height / 2 - player_hitbox.Height / 2)
                     player_hitbox.Y = player_hitbox.Y - 8;
+                    Map.Y += 8;
                     immobile = false;
 
                 }
                 if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown) || Keyboard.GetState().IsKeyDown(Keys.Down)) && immobile && player_hitbox.Y < Ressources.grass.Height)
                 {
+                    if (player_hitbox.Y < Ressources.fondMenu.Height / 2 - player_hitbox.Height/ 2)
                     player_hitbox.Y = player_hitbox.Y + 8;
+                    Map.Y -= 8;
                     immobile = false;
                 }
                 immobile = true;
