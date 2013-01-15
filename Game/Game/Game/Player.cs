@@ -72,18 +72,21 @@ namespace Game
                 {
                     player_hitbox.X += speed;
                     this.direction = Direction.Right;
+                    this.frameline = 1;
                     this.Animate();
 
                 }
                 else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft) || Keyboard.GetState().IsKeyDown(Keys.Left)) && player_hitbox.X > 0)
                 {
                     player_hitbox.X -= speed;
+                    this.frameline = 1;
                     this.direction = Direction.Left;
                     this.Animate();
                 }
                 else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp) || Keyboard.GetState().IsKeyDown(Keys.Up)) && player_hitbox.Y > 0)
                 {
                     player_hitbox.Y -= speed;
+                    this.frameline = 1;
                     this.direction = Direction.Up;
                     this.Animate();
 
@@ -91,11 +94,13 @@ namespace Game
                 else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown) || Keyboard.GetState().IsKeyDown(Keys.Down)) && player_hitbox.Y < Ressources.grass.Height)
                 {
                     player_hitbox.Y += speed;
+                    this.frameline = 1;
                     this.direction = Direction.Down;
                     this.Animate();
                 }
                 if (Keyboard.GetState().IsKeyUp(Keys.Up) && Keyboard.GetState().IsKeyUp(Keys.Down) && Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right))
                 {
+                    this.frameline = 0;
                     this.Animate();
                 }
                 switch (this.direction)

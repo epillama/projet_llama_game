@@ -42,13 +42,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprite\Llama\Lama2.png">
-      <Name>Lama2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sprite\Menu\Menu.png">
       <Name>fond</Name>
       <Importer>TextureImporter</Importer>
@@ -120,13 +113,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprite\Llama\Llamastand.png">
-      <Name>Llamastand</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Sprite\Llama\Llamawalk.png">
-      <Name>Llamawalk</Name>
+    <Compile Include="Sprite\Llama\llama.png">
+      <Name>llama</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
