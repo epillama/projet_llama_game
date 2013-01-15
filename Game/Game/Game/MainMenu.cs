@@ -44,17 +44,17 @@ namespace Game
             switch (CurrentGameState)
             {
                 case GameState.MainMenu:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Down) && !changeselection)
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Down) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))) && !changeselection)
                     {
                         menuPosition++;
                         changeselection = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(Keys.Up) && !changeselection)
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Up)|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))) && !changeselection)
                     {
                         menuPosition--;
                         changeselection = true;
                     }
-                    if (Keyboard.GetState().IsKeyUp(Keys.Down) && Keyboard.GetState().IsKeyUp(Keys.Up))
+                    if (Keyboard.GetState().IsKeyUp(Keys.Down) && Keyboard.GetState().IsKeyUp(Keys.Up) && GamePad.GetState(PlayerIndex.One).IsButtonUp(Buttons.DPadDown) && GamePad.GetState(PlayerIndex.One).IsButtonUp(Buttons.DPadUp))
                         changeselection = false;
                     //cas haut bas
                     if (menuPosition == -1)
@@ -62,7 +62,7 @@ namespace Game
                     if (menuPosition == 3)
                         menuPosition = 0;
                     //selection
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Space))|(Keyboard.GetState().IsKeyDown(Keys.Enter))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)))
                     {
                         switch (menuPosition)
                         {
@@ -80,17 +80,17 @@ namespace Game
                     break;
 
                 case GameState.Playing:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
                         CurrentGameState = GameState.MainMenu;
                     break;
 
                 case GameState.Options:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
                         CurrentGameState = GameState.MainMenu;
                     break;
 
                 case GameState.Pause:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
                         CurrentGameState = GameState.MainMenu;
                     break;
 

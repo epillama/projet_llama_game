@@ -68,7 +68,7 @@ namespace Game
         {
             if (MainMenu.CurrentGameState == MainMenu.GameState.Playing)
             {
-                if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight) || Keyboard.GetState().IsKeyDown(Keys.Right)) && player_hitbox.X < Ressources.grass.Width)
+                if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickRight) || Keyboard.GetState().IsKeyDown(Keys.Right)) && player_hitbox.X < Ressources.grass.Width)
                 {
                     player_hitbox.X += speed;
                     this.direction = Direction.Right;
@@ -76,14 +76,14 @@ namespace Game
                     this.Animate();
 
                 }
-                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft) || Keyboard.GetState().IsKeyDown(Keys.Left)) && player_hitbox.X > 0)
+                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft) || Keyboard.GetState().IsKeyDown(Keys.Left)) && player_hitbox.X > 0)
                 {
                     player_hitbox.X -= speed;
                     this.frameline = 1;
                     this.direction = Direction.Left;
                     this.Animate();
                 }
-                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp) || Keyboard.GetState().IsKeyDown(Keys.Up)) && player_hitbox.Y > 0)
+                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickUp) || Keyboard.GetState().IsKeyDown(Keys.Up)) && player_hitbox.Y > 0)
                 {
                     player_hitbox.Y -= speed;
                     this.frameline = 1;
@@ -91,7 +91,7 @@ namespace Game
                     this.Animate();
 
                 }
-                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown) || Keyboard.GetState().IsKeyDown(Keys.Down)) && player_hitbox.Y < Ressources.grass.Height)
+                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickDown) || Keyboard.GetState().IsKeyDown(Keys.Down)) && player_hitbox.Y < Ressources.grass.Height)
                 {
                     player_hitbox.Y += speed;
                     this.frameline = 1;
