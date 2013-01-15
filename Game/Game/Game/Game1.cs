@@ -29,6 +29,7 @@ namespace Game
             base.Initialize();
             this.graphics.PreferredBackBufferWidth = Ressources.fondMenu.Width;
             this.graphics.PreferredBackBufferHeight = Ressources.fondMenu.Height;
+            this.graphics.IsFullScreen = true;
             graphics.ApplyChanges();
 
         }
@@ -52,7 +53,12 @@ namespace Game
             if (MainMenu.CurrentGameState == MainMenu.GameState.MainMenu)
                 this.IsMouseVisible = true;
             if (MainMenu.IsQuit)
+            {
+                System.Threading.Thread.Sleep(3000);
                 this.Exit();
+            }
+            if (MainMenu.CurrentGameState == MainMenu.GameState.Playing)
+                this.IsMouseVisible = false;
             affiche.Update();
             base.Update(gameTime);
         }
@@ -61,7 +67,7 @@ namespace Game
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin();    
             affiche.Draw_affiche(spriteBatch);
             spriteBatch.End();
 

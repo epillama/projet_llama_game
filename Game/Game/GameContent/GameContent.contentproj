@@ -42,14 +42,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprite\Lama2.png">
+    <Compile Include="Sprite\Llama\Lama2.png">
       <Name>Lama2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprite\Menu.png">
+    <Compile Include="Sprite\Menu\Menu.png">
       <Name>fond</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -94,6 +94,27 @@
   <ItemGroup>
     <Compile Include="Sprite\End.png">
       <Name>End</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprite\Background\grass.png">
+      <Name>grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprite\Background\OptionsBackground.png">
+      <Name>OptionsBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprite\elementsOptions\marchearret.png">
+      <Name>marchearret</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
