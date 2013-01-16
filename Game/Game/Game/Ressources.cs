@@ -27,12 +27,15 @@ namespace Game
         public static Texture2D grass;
         //textures pour les options
         public static Texture2D fondOptions;
+        /*
         public static Texture2D volumeOptions;
         public static Texture2D fullscreenOptions;
         public static Texture2D marcheOptions;
         public static Texture2D arretOptions;
         public static Texture2D retourOptions;
+        */
         public static Texture2D marchearret;
+
         // Son
         public static Song song;
         public static SoundEffect effect;
@@ -58,7 +61,6 @@ namespace Game
             marchearret = Content.Load<Texture2D>("Sprite/elementsOptions/marchearret");
             //Map
             grass = Content.Load<Texture2D>("Sprite/Background/grass");
-            //Son
             // Son
             song = Content.Load<Song>("Sons/menusong");
             effect = Content.Load<SoundEffect>("Sons/effectmenu");

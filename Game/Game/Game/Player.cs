@@ -19,7 +19,7 @@ namespace Game
         Right,
     };
 
-    class Player
+    class Player : Scroll
     {
         // champs
 
@@ -28,22 +28,21 @@ namespace Game
         int frameline;
         int framecolumn;
         SpriteEffects Mirror;
-        public static Rectangle Map;
         int animationspeed;
         int timer;
-        int speed;
+        
+        public static int speed;
 
         //constructeur
 
         public Player()
         {
-            player_hitbox = new Rectangle(0, 0, 56, 58);
+            player_hitbox = centreecran; // llama centré
             this.frameline = 0;
             this.framecolumn = 0;
             this.Mirror = SpriteEffects.None;
             this.animationspeed = 10;
-            this.speed = 4;
-            Map = new Rectangle(0, 0, Ressources.grass.Width, Ressources.grass.Height);
+            speed = 4;
         }
 
         // methodes
@@ -64,40 +63,94 @@ namespace Game
 
         // update & draw
 
-        public void update()
+        public void update_Player()
         {
             if (MainMenu.CurrentGameState == MainMenu.GameState.Playing)
             {
-                if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickRight) || Keyboard.GetState().IsKeyDown(Keys.Right)) && player_hitbox.X < Ressources.grass.Width)
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickRight) || Keyboard.GetState().IsKeyDown(Keys.Right))
                 {
-                    player_hitbox.X += speed;
+                    if (borddroit)
+                    {
+                        for (int i = 1; i <= speed && player_hitbox.X + player_hitbox.Width <= largeurecran; i++)
+                        {
+                            player_hitbox.X += 1;
+                        }
+                    }
+                    if (bordgauche)
+                    {
+                        for (int i = 1; i <= speed && !(player_hitbox.X == centreecran.X); i++)
+                        {
+                            player_hitbox.X += 1;
+                        }
+                    }
+
                     this.direction = Direction.Right;
                     this.frameline = 1;
                     this.Animate();
 
                 }
-                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft) || Keyboard.GetState().IsKeyDown(Keys.Left)) && player_hitbox.X > 0)
+                else if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft) || Keyboard.GetState().IsKeyDown(Keys.Left))
                 {
-                    player_hitbox.X -= speed;
+                    if (bordgauche)
+                    {
+                        for (int i = 1; i <= speed && player_hitbox.X > 0; i++)
+                        {
+                            player_hitbox.X -= 1;
+                        }
+                    }
+                    if (borddroit)
+                    {
+                        for (int i = 1; i <= speed && !(player_hitbox.X == centreecran.X); i++)
+                        {
+                            player_hitbox.X -= 1;
+                        }
+                    }
                     this.frameline = 1;
                     this.direction = Direction.Left;
                     this.Animate();
                 }
-                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickUp) || Keyboard.GetState().IsKeyDown(Keys.Up)) && player_hitbox.Y > 0)
+                else if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickUp) || Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
-                    player_hitbox.Y -= speed - 1;
+                    if (bordhaut)
+                    {
+                        for (int i = 1; i <= speed && player_hitbox.Y > 0; i++)
+                        {
+                            player_hitbox.Y -= 1;
+                        }
+                    }
+                    if (bordbas)
+                    {
+                        for (int i = 1; i <= speed && !(player_hitbox.Y == centreecran.Y); i++)
+                        {
+                            player_hitbox.Y -= 1;
+                        }
+                    }
                     this.frameline = 5;
                     this.direction = Direction.Up;
                     this.Animate();
 
                 }
-                else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickDown) || Keyboard.GetState().IsKeyDown(Keys.Down)) && player_hitbox.Y < Ressources.grass.Height)
+                else if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickDown) || Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
-                    player_hitbox.Y += speed - 1;
+                    if (bordbas)
+                    {
+                        for (int i = 1; i <= speed && player_hitbox.Y + player_hitbox.Height < hauteurecran; i++)
+                        {
+                            player_hitbox.Y += 1;
+                        }
+                    }
+                    if (bordhaut)
+                    {
+                        for (int i = 1; i <= speed && !(player_hitbox.Y == centreecran.Y); i++)
+                        {
+                            player_hitbox.Y += 1;
+                        }
+                    }
                     this.frameline = 3;
                     this.direction = Direction.Down;
                     this.Animate();
                 }
+
                 if (Keyboard.GetState().IsKeyUp(Keys.Up) && Keyboard.GetState().IsKeyUp(Keys.Down) && Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right))
                 {
                     if (direction == Direction.Left || direction == Direction.Right)

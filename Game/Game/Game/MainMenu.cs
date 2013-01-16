@@ -49,7 +49,7 @@ namespace Game
                         menuPosition++;
                         changeselection = true;
                     }
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Up)|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))) && !changeselection)
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Up) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))) && !changeselection)
                     {
                         menuPosition--;
                         changeselection = true;
@@ -62,11 +62,13 @@ namespace Game
                     if (menuPosition == 3)
                         menuPosition = 0;
                     //selection
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Space))|(Keyboard.GetState().IsKeyDown(Keys.Enter))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Space)) | (Keyboard.GetState().IsKeyDown(Keys.Enter)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)))
                     {
                         switch (menuPosition)
                         {
                             case 0:
+                                Player.player_hitbox = Scroll.centreecran;
+                                Player.mapaffiche = Scroll.rectangleecran;
                                 CurrentGameState = GameState.Playing;
                                 MediaPlayer.Stop();
                                 MediaPlayer.Play(Ressources.songtest);
@@ -138,7 +140,7 @@ namespace Game
                     break;
 
                 case GameState.Playing:
-                    spriteBatch.Draw(Ressources.grass, Player.Map, Color.White);
+                    spriteBatch.Draw(Ressources.grass, new Rectangle(0, 0, Ressources.fondMenu.Width, Ressources.fondMenu.Height), Scroll.mapaffiche, Color.White);
                     break;
 
                 case GameState.Pause:
@@ -153,7 +155,7 @@ namespace Game
 
                 case GameState.Quit:
                     spriteBatch.Draw(Ressources.imageQuit, Vector2.Zero, Color.White);
-                    
+
                     break;
             }
         }
