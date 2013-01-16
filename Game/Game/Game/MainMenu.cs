@@ -31,9 +31,9 @@ namespace Game
         //Constructeurs
 
         //Methods
-        public void Load_Content()
+        static public void Load_Content()
         {
-
+            MediaPlayer.Play(Ressources.song);
         }
 
         //Update & Draw
@@ -68,34 +68,51 @@ namespace Game
                         {
                             case 0:
                                 CurrentGameState = GameState.Playing;
+                                MediaPlayer.Stop();
+                                MediaPlayer.Play(Ressources.songtest);
                                 break;
                             case 1:
                                 CurrentGameState = GameState.Options;
+                                Ressources.effect.Play();
                                 break;
                             case 2:
                                 CurrentGameState = GameState.Quit;
+                                Ressources.effect.Play();
                                 break;
                         }
                     }
                     break;
 
                 case GameState.Playing:
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    {
                         CurrentGameState = GameState.MainMenu;
+                        MediaPlayer.Stop();
+                        Ressources.effect.Play();
+                        MediaPlayer.Play(Ressources.song);
+                    }
                     break;
 
                 case GameState.Options:
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    {
                         CurrentGameState = GameState.MainMenu;
+                        Ressources.effect.Play();
+                    }
                     break;
 
                 case GameState.Pause:
                     if ((Keyboard.GetState().IsKeyDown(Keys.Escape)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    {
                         CurrentGameState = GameState.MainMenu;
+                        Ressources.effect.Play();
+                    }
                     break;
 
                 case GameState.Quit:
+                    MediaPlayer.Stop();
                     IsQuit = true;
+                    Ressources.quiteffect.Play();
                     break;
 
             }

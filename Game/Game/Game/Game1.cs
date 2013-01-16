@@ -39,6 +39,7 @@ namespace Game
             Ressources.LoadContent(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             affiche = new Afficheur();
+            MainMenu.Load_Content();
 
         }
 
@@ -54,7 +55,7 @@ namespace Game
                 this.IsMouseVisible = true;
             if (MainMenu.IsQuit)
             {
-                System.Threading.Thread.Sleep(000);
+                System.Threading.Thread.Sleep(2000);
                 this.Exit();
             }
             if (MainMenu.CurrentGameState == MainMenu.GameState.Playing)
