@@ -17,6 +17,7 @@ namespace Game
         // champs
 
         Player localplayer;
+        Enemy enemy;
         MainMenu affichemenu;
 
 
@@ -25,6 +26,7 @@ namespace Game
         public Afficheur()
         {
             localplayer = new Player();
+            enemy = new Enemy();
             affichemenu = new MainMenu();
         }
 
@@ -40,6 +42,7 @@ namespace Game
             
             affichemenu.Update();
             localplayer.update();
+            enemy.update();
         }
 
         public void Draw_affiche(SpriteBatch spriteBatch)
@@ -47,6 +50,8 @@ namespace Game
             
             affichemenu.Draw_Menu(spriteBatch);
             localplayer.draw_player(spriteBatch);
+            enemy.draw_enemy(spriteBatch);
+
         }
 
 
