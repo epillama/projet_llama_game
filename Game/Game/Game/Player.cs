@@ -85,22 +85,27 @@ namespace Game
                 }
                 else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickUp) || Keyboard.GetState().IsKeyDown(Keys.Up)) && player_hitbox.Y > 0)
                 {
-                    player_hitbox.Y -= speed;
-                    this.frameline = 1;
+                    player_hitbox.Y -= speed - 1;
+                    this.frameline = 5;
                     this.direction = Direction.Up;
                     this.Animate();
 
                 }
                 else if ((GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickDown) || Keyboard.GetState().IsKeyDown(Keys.Down)) && player_hitbox.Y < Ressources.grass.Height)
                 {
-                    player_hitbox.Y += speed;
-                    this.frameline = 1;
+                    player_hitbox.Y += speed - 1;
+                    this.frameline = 3;
                     this.direction = Direction.Down;
                     this.Animate();
                 }
                 if (Keyboard.GetState().IsKeyUp(Keys.Up) && Keyboard.GetState().IsKeyUp(Keys.Down) && Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right))
                 {
-                    this.frameline = 0;
+                    if (direction == Direction.Left || direction == Direction.Right)
+                        this.frameline = 0;
+                    else if (direction == Direction.Down)
+                        this.frameline = 2;
+                    else if (direction == Direction.Up)
+                        this.frameline = 4;
                     this.Animate();
                 }
                 switch (this.direction)

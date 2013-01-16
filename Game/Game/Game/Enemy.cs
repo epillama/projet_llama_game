@@ -92,8 +92,8 @@ namespace Game
                 {
                     if (enemy_hitbox.Y > Player.player_hitbox.Y)
                     {
-                        enemy_hitbox.Y -= speed_e;
-                        this.frameline = 1;
+                        enemy_hitbox.Y -= speed_e - 1;
+                        this.frameline = 5;
                         this.direction = Direction.Down;
                         this.Animate();
 
@@ -103,8 +103,8 @@ namespace Game
 
                     if (enemy_hitbox.Y < Player.player_hitbox.Y)
                     {
-                        enemy_hitbox.Y += speed_e;
-                        this.frameline = 1;
+                        enemy_hitbox.Y += speed_e - 1;
+                        this.frameline = 3;
                         this.direction = Direction.Up;
                         this.Animate();
                     }
