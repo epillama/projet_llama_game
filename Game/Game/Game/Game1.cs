@@ -33,12 +33,14 @@ namespace Game
             graphics.ApplyChanges();
 
         }
+        
 
         protected override void LoadContent()
         {
             Ressources.LoadContent(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             affiche = new Afficheur();
+            MediaPlayer.Play(Ressources.song);
 
         }
 
@@ -54,14 +56,15 @@ namespace Game
                 this.IsMouseVisible = true;
             if (MainMenu.IsQuit)
             {
-                System.Threading.Thread.Sleep(000);
+                System.Threading.Thread.Sleep(2000);
                 this.Exit();
             }
             if (MainMenu.CurrentGameState == MainMenu.GameState.Playing)
                 this.IsMouseVisible = false;
             affiche.Update();
-            base.Update(gameTime);
-        }
+            base.Update(gameTime);   
+        }   
+       
 
         protected override void Draw(GameTime gameTime)
         {

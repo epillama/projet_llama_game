@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
+
 
 namespace Game
 {
@@ -31,6 +34,12 @@ namespace Game
         public static Texture2D arretOptions;
         public static Texture2D retourOptions;
         public static Texture2D marchearret;
+        // Son
+        public static Song song;
+        public static SoundEffect effect;
+        public static SoundEffect quiteffect;
+        public static Song songtest;
+        
 
         public static void LoadContent(ContentManager Content)
         {
@@ -51,6 +60,12 @@ namespace Game
             marchearret = Content.Load<Texture2D>("Sprite/elementsOptions/marchearret");
             //Map
             grass = Content.Load<Texture2D>("Sprite/Background/grass");
+            
+            // Son
+            song = Content.Load<Song>("Sons/menusong");
+            effect = Content.Load<SoundEffect>("Sons/effectmenu");
+            quiteffect = Content.Load<SoundEffect>("Sons/quiteffect");
+            songtest = Content.Load<Song>("Sons/test");
         }
     }
 }

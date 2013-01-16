@@ -1,3 +1,4 @@
+Content\Sprite\Menu\fond.xnb
 Content\Sprite\Menu\jouer1.xnb
 Content\Sprite\Menu\jouer2.xnb
 Content\Sprite\Menu\Quitter1.xnb
@@ -7,6 +8,11 @@ Content\Sprite\Menu\Options2.xnb
 Content\Sprite\End.xnb
 Content\Sprite\Background\grass.xnb
 Content\Sprite\Background\OptionsBackground.xnb
-Content\Sprite\Menu\fond.xnb
 Content\Sprite\elementsOptions\marchearret.xnb
 Content\Sprite\Llama\llama.xnb
+Content\Sons\menusong.xnb
+Content\Sons\test.xnb
+Content\Sons\effectmenu.xnb
+Content\Sons\quiteffect.xnb
+Content\Sons\menusong.wma
+Content\Sons\test.wma
