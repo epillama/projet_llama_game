@@ -19,7 +19,7 @@ namespace Game
         Player localplayer;
         Enemy enemy;
         MainMenu affichemenu;
-
+        Scroll scrolling;
 
         // constructeur
 
@@ -28,6 +28,7 @@ namespace Game
             localplayer = new Player();
             enemy = new Enemy();
             affichemenu = new MainMenu();
+            scrolling = new Scroll();
         }
 
         // methode
@@ -39,9 +40,10 @@ namespace Game
         public void Update()
         {
             // update des autres classes
-            
             affichemenu.Update();
-            localplayer.update();
+            scrolling.testbords();
+            scrolling.update_scroll();
+            localplayer.update_Player();
             enemy.update();
         }
 
@@ -49,9 +51,16 @@ namespace Game
         {
             
             affichemenu.Draw_Menu(spriteBatch);
-            localplayer.draw_player(spriteBatch);
-            enemy.draw_enemy(spriteBatch);
-
+            if (Player.player_hitbox.Y < Enemy.enemy_hitbox.Y)
+            {
+                localplayer.draw_player(spriteBatch);
+                enemy.draw_enemy(spriteBatch);
+            }
+            else
+            {
+                enemy.draw_enemy(spriteBatch);
+                localplayer.draw_player(spriteBatch);
+            }
         }
 
 

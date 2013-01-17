@@ -31,9 +31,9 @@ namespace Game
         //Constructeurs
 
         //Methods
-        public void Load_Content()
+        static public void Load_Content()
         {
-
+            MediaPlayer.Play(Ressources.song);
         }
 
         //Update & Draw
@@ -49,7 +49,7 @@ namespace Game
                         menuPosition++;
                         changeselection = true;
                     }
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Up)|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))) && !changeselection)
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Up) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))) && !changeselection)
                     {
                         menuPosition--;
                         changeselection = true;
@@ -62,40 +62,59 @@ namespace Game
                     if (menuPosition == 3)
                         menuPosition = 0;
                     //selection
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Space))|(Keyboard.GetState().IsKeyDown(Keys.Enter))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Space)) | (Keyboard.GetState().IsKeyDown(Keys.Enter)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)))
                     {
                         switch (menuPosition)
                         {
                             case 0:
+                                Player.player_hitbox = Scroll.centreecran;
+                                Player.mapaffiche = Scroll.rectangleecran;
                                 CurrentGameState = GameState.Playing;
+                                MediaPlayer.Stop();
+                                MediaPlayer.Play(Ressources.songtest);
                                 break;
                             case 1:
                                 CurrentGameState = GameState.Options;
+                                Ressources.effect.Play();
                                 break;
                             case 2:
                                 CurrentGameState = GameState.Quit;
+                                Ressources.effect.Play();
                                 break;
                         }
                     }
                     break;
 
                 case GameState.Playing:
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    {
                         CurrentGameState = GameState.MainMenu;
+                        MediaPlayer.Stop();
+                        Ressources.effect.Play();
+                        MediaPlayer.Play(Ressources.song);
+                    }
                     break;
 
                 case GameState.Options:
-                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape))|(GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Escape)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    {
                         CurrentGameState = GameState.MainMenu;
+                        Ressources.effect.Play();
+                    }
                     break;
 
                 case GameState.Pause:
                     if ((Keyboard.GetState().IsKeyDown(Keys.Escape)) | (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back)))
+                    {
                         CurrentGameState = GameState.MainMenu;
+                        Ressources.effect.Play();
+                    }
                     break;
 
                 case GameState.Quit:
+                    MediaPlayer.Stop();
                     IsQuit = true;
+                    Ressources.quiteffect.Play();
                     break;
 
             }
@@ -121,7 +140,7 @@ namespace Game
                     break;
 
                 case GameState.Playing:
-                    spriteBatch.Draw(Ressources.grass, Player.Map, Color.White);
+                    spriteBatch.Draw(Ressources.grass, new Rectangle(0, 0, Ressources.fondMenu.Width, Ressources.fondMenu.Height), Scroll.mapaffiche, Color.White);
                     break;
 
                 case GameState.Pause:
@@ -136,7 +155,7 @@ namespace Game
 
                 case GameState.Quit:
                     spriteBatch.Draw(Ressources.imageQuit, Vector2.Zero, Color.White);
-                    
+
                     break;
             }
         }

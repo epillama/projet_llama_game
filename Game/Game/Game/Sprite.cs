@@ -10,8 +10,7 @@ namespace Game
     class Sprite
     {
         //fields
-        float index = 0;
-        int maxIndex = 0;
+
         //constructors
 
         //methods

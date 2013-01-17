@@ -10,6 +10,7 @@ namespace Game
 {
     class Button
     {
+        /*
         Texture2D Texture;
         Vector2 Position;
         Rectangle Rectangle;
@@ -66,5 +67,6 @@ namespace Game
         {
             spriteBatch.Draw(Texture, Rectangle, colour);
         }
+         * */
     }
 }
